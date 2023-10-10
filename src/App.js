@@ -1,25 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
+import { useToggle } from './components/useToggle';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	// const [isVisible, toggle] = useToggle();
+	const { state: isVisible, toggle } = useToggle();
+	// const [isVisible2, toggle2] = useToggle();
+
+	return (
+		<div className="App">
+			<button onClick={toggle}>
+				{isVisible ? "Hide" : "Show"}
+			</button>
+			{isVisible && <h1> Hidden text</h1>}
+			
+			{/* <button onClick={toggle2}>
+				{isVisible2 ? "Hide" : "Show"}
+			</button>
+			{isVisible2 && <h1> Hidden text</h1>} */}
+		</div>
+	);
 }
 
 export default App;
